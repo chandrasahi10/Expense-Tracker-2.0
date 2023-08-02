@@ -1,0 +1,10 @@
+const express = require('express');
+const path = require('path');
+const controller = require(path.join(__dirname,'..','controllers','controller'));
+
+const router = express.Router();
+
+router.get('/',controller.viewSignUp);
+router.post('/',controller.doSignUp);
+
+module.exports = router;
