@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,76 +8,84 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/8faa7ab5d6.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div class="container">
-      <div class="form-box">
-        <h1 id="Title"> Sign Up</h1>
-        <form action='/' method="POST" id="myForm">
-            <div class="input-group">
-                <div class="input-field" id="nameField">
-                    <i class="fa-solid fa-user"></i>
-                    <input type="text" placeholder="Name" name="name" id="nameValue">
-                </div>
+   <div class="container">
+        <div class="form-box">
+            <h1 id="Title"> Sign Up</h1>
+            <form action='/' method="POST" id="myForm">
+                <div class="input-group">
+                    <div class="input-field" id="nameField">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Name" name="name" id="nameValue">
+                    </div>
 
-                <div class="input-field">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="Email" name="email">
-                </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input required="Email required" type="email" placeholder="Email" name="email" id="emailValue">
+                    </div>
 
-                <div class="input-field">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password">
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password" id="passValue">
+                    </div>
+                    <p>Lost your password ? <a href="#">Get it back.</a></p>
                 </div>
-                <p>Lost your password ? <a href="#">Get it back.</a></p>
-            </div>
-            <div class="btn-field">
-               <button type="submit" id="signUpBtn">Sign Up</button>
-               <button type="button" id="signInBtn" class="disable">Sign In</button>
-            </div>
-        </form>
-      </div>
-      <div class="description-box">
-        <form><h2><i style="margin-right: 5px;" class="fa-solid fa-calculator"></i>Expensy</h2>
-            <p>Welcome to Expensy - Your Ultimate Expense Tracker ! <br><br>Say goodbye to financial worries and hello to smart money management. With Expensy, keeping track of your expenses has never been easier. From everyday purchases to big-budget decisions, our user-friendly interface empowers you to take control of your finances effortlessly. Simplify your life and achieve your financial goals with Expensy - the only expense tracker you'll ever need !
-        </p></form>
-      </div>
+                <div class="btn-field">
+                    <button type="submit" id="signUpBtn">Sign Up</button>
+                    <button type="button" id="signInBtn" class="disable">Sign In</button>
+                </div>
+            </form>
+        </div>
+        <div class="description-box">
+            <form>
+                <h2><i style="margin-right: 5px;" class="fa-solid fa-calculator"></i>Expensy</h2>
+                <p>Welcome to Expensy - Your Ultimate Expense Tracker ! <br><br>Say goodbye to financial worries and
+                    hello to smart money management. With Expensy, keeping track of your expenses has never been easier.
+                    From everyday purchases to big-budget decisions, our user-friendly interface empowers you to take
+                    control of your finances effortlessly. Simplify your life and achieve your financial goals with
+                    Expensy - the only expense tracker you'll ever need !
+                </p>
+            </form>
+        </div>
     </div>
 
-<script>
+    <script>
 
-let signUpBtn = document.getElementById("signUpBtn");
-let signInBtn = document.getElementById("signInBtn");
-let nameField = document.getElementById("nameField");
-let Title = document.getElementById("Title");
-let nameValue = document.getElementById("nameValue");
+        let signUpBtn = document.getElementById("signUpBtn");
+        let signInBtn = document.getElementById("signInBtn");
+        let nameField = document.getElementById("nameField");
+        let Title = document.getElementById("Title");
+        let nameValue = document.getElementById("nameValue");
 
-signInBtn.onclick = function() {
-    nameField.style.maxHeight = "0";
-    Title.innerHTML = "Sign In";
-    signUpBtn.classList.add("disable");
-    signInBtn.classList.remove("disable");
-}
+        signInBtn.onclick = function () {
+            nameField.style.maxHeight = "0";
+            Title.innerHTML = "Sign In";
+            signUpBtn.classList.add("disable");
+            signInBtn.classList.remove("disable");
+        }
 
-signUpBtn.onclick = function(event) {
+        signUpBtn.onclick = function (event) {
 
-    const myForm = document.getElementById('myForm');
+            const myForm = document.getElementById('myForm');
 
-    if(nameValue.value.trim()===''){
+            if (nameValue.value.trim() === '') {
 
-    event.preventDefault();
+                event.preventDefault();
 
-    nameField.style.maxHeight = "60px";
-    Title.innerHTML = "Sign Up";
-    signUpBtn.classList.remove("disable");
-    signInBtn.classList.add("disable");
-    
-    }else{
+                nameField.style.maxHeight = "60px";
+                Title.innerHTML = "Sign Up";
+                signUpBtn.classList.remove("disable");
+                signInBtn.classList.add("disable");
 
-    }
-};
+            } else {
+
+            }
+        };
 
 
-</script>
-    
+    </script>
+
 </body>
+
 </html>
