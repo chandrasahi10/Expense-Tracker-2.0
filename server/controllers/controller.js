@@ -1,5 +1,6 @@
 const mysql = require('mysql2');
 const path = require('path');
+const bcrypt = require('bcrypt');
 
 const pool = mysql.createPool({
     connectionLimit: 100,
@@ -51,15 +52,25 @@ exports.doSignUp = (req,res)=>{
 
         }else{
 
-        const query = 'INSERT INTO User (Name, Email, Password) VALUES (?,?,?)'
-        pool.execute(query, [name,email,password],(err,result)=>{
-            if(err){
-                console.log(err);
-                return
-            }
-            console.log('data inserted successfully');
-            res.sendFile(path.join(__dirname,'../..','views','home.html'));
-        });
+            const saltRounds = 10;
+
+            bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+                if (err) {
+                    console.log('Error while hashing password', err);
+                    return;
+                }
+            
+                const query = 'INSERT INTO User (Name, Email, Password) VALUES (?,?,?)';
+                pool.execute(query, [name, email, hashedPassword], (err, result) => {
+                    if (err) {
+                        console.log('Error inserting data', err);
+                        return;
+                    }
+                    console.log('Data inserted successfully');
+                    res.sendFile(path.join(__dirname, '../..', 'views', 'home.html'));
+                });
+            });
+            
     };
     });
     
@@ -94,19 +105,26 @@ exports.doSignUp = (req,res)=>{
               }
           
             
-            if(password !== results[0].Password){
-                return res.send(`
-                <script>
-                    alert('Check your password');
-                    window.history.back();
-                </script>
-            `);
-            }
-
-            console.log('Login Successful');
-            res.sendFile(path.join(__dirname,'../..','views','home.html'));
-        });
-
-    };
-}
+              const hashedPassword = results[0].Password;
+              bcrypt.compare(password, hashedPassword, (err, isMatch) => {
+                  if (err) {
+                      console.log('Error while comparing passwords', err);
+                      return;
+                  }
+      
+                  if (!isMatch) {
+                      return res.send(`
+                      <script>
+                          alert('Check your password');
+                          window.history.back();
+                      </script>
+                  `);
+                  }
+      
+                  console.log('Login Successful');
+                  res.sendFile(path.join(__dirname, '../..', 'views', 'home.html'));
+              });
+          });
+      }
+    }
 
