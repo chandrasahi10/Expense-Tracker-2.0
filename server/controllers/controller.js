@@ -22,6 +22,18 @@ exports.doSignUp = (req,res)=>{
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
+    const formAction = req.body.formAction;
+
+    if(formAction==='signUp'){
+    
+    if(!name || !email || !password){
+        return res.send(`
+        <script>
+            alert('Please check all the fields');
+            window.history.back();
+        </script>
+    `);
+    };
 
     pool.execute('SELECT COUNT(*) AS count FROM User WHERE Email = ?',[email],(err,results) =>{
         if(err){
@@ -32,7 +44,7 @@ exports.doSignUp = (req,res)=>{
         if(userExists){
             return res.send(`
             <script>
-                alert('User already exists');
+                alert('User already exists.Please login.');
                 window.history.back();
             </script>
         `);
@@ -50,5 +62,51 @@ exports.doSignUp = (req,res)=>{
         });
     };
     });
+    
+    };
+    
+    if(formAction === 'signIn'){
+
+        if(!email || !password){
+            return res.send(`
+            <script>
+                alert('Please check all the fields');
+                window.history.back();
+            </script>
+        `);
+        };
+
+        const query1 = 'SELECT * from User where Email = ?'
+        pool.execute(query1, [email],(err,results)=>{
+            if(err){
+                
+                console.log(err);
+                return
+            }
+
+            if (results.length === 0) {
+                return res.send(`
+                  <script>
+                    alert('Invalid user');
+                    window.history.back();
+                  </script>
+                `);
+              }
+          
+            
+            if(password !== results[0].Password){
+                return res.send(`
+                <script>
+                    alert('Check your password');
+                    window.history.back();
+                </script>
+            `);
+            }
+
+            console.log('Login Successful');
+            res.sendFile(path.join(__dirname,'../..','views','home.html'));
+        });
+
+    };
 }
 

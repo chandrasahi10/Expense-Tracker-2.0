@@ -6,58 +6,51 @@ let Title = document.getElementById("Title");
 let nameValue = document.getElementById("nameValue");
 let emailValue = document.getElementById("emailValue");
 let passValue = document.getElementById("passValue");
+let formAction = document.getElementById("formAction");
 
 signInBtn.onclick = function (event) {
 
 
     const myForm = document.getElementById('myForm');
 
-    nameValue.value = '';
-    emailValue.value = '';
-    passValue.value = '';
-  
-
-    if (emailValue.value.trim() === '' && passValue.value.trim() === '') {
-    
-    event.preventDefault();
-
-    nameField.style.maxHeight = "0";
-    Title.innerHTML = "Sign In";
-    signUpBtn.classList.add("disable");
-    signInBtn.classList.remove("disable");
-    
-   
-    }else {
-        if (!signInBtn.classList.contains("disable")) {
+    if (!signInBtn.classList.contains("disable")) {
+            formAction.value = 'signIn'
             myForm.submit();
-          } else {
-            event.preventDefault();
-          }
-        };
-
+    } else {
+           
+           event.preventDefault();
+      
+            nameValue.value = '';
+            emailValue.value = '';
+            passValue.value = '';
+        
+            nameField.style.maxHeight = "0";
+            Title.innerHTML = "Sign In";
+            signUpBtn.classList.add("disable");
+            signInBtn.classList.remove("disable");
+      }
     };
+
 
 signUpBtn.onclick = function (event) {
 
     const myForm = document.getElementById('myForm');
 
-    emailValue.value = '';
-    passValue.value = '';
-
-    if (nameValue.value.trim() === '') {
-
-        event.preventDefault();
-
-        nameField.style.maxHeight = "60px";
-        Title.innerHTML = "Sign Up";
-        signUpBtn.classList.remove("disable");
-        signInBtn.classList.add("disable");
-
+    if (!signUpBtn.classList.contains("disable")) {
+            formAction.value = 'signUp'
+            myForm.submit();s
     } else {
-        if (!signUpBtn.classList.contains("disable")) {
-            myForm.submit();
-          } else {
-            event.preventDefault();
-          }
-        };
+          
+          event.preventDefault();
+
+          emailValue.value = '';
+          passValue.value = '';
+  
+          nameField.style.maxHeight = "60px";
+          Title.innerHTML = "Sign Up";
+          signUpBtn.classList.remove("disable");
+          signInBtn.classList.add("disable");
+           
+        }
     };
+
