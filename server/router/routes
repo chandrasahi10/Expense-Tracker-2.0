@@ -1,10 +1,16 @@
 const express = require('express');
 const path = require('path');
-const controller = require(path.join(__dirname,'..','controllers','controller'));
+const createUser = require(path.join(__dirname,'..','controllers','createUser.js'));
+const home = require(path.join(__dirname,'..','controllers','home.js'));
+
 
 const router = express.Router();
 
-router.get('/',controller.viewSignUp);
-router.post('/',controller.doSignUp);
+router.get('/signup',createUser.viewSignUp);
+
+router.post('/home',createUser.doSignUp);
+router.get('/home',home.viewHome);
+
+
 
 module.exports = router;

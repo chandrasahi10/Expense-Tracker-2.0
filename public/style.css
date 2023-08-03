@@ -38,10 +38,12 @@
     top: 50%;
     left: 50%;
     transform: translate(50%,-83%);
-    background: rgb(226, 132, 200,0.7);
     padding: 50px 60px 70px;
     border-radius: 40px;
-    box-shadow: 10px 10px rgb(92, 2, 92);
+    box-shadow: 10px 10px #5c025c;
+    border: 3px solid #5c025c;
+    background: transparent;
+    backdrop-filter: blur(25px);
 }
 .description-box form p{
     font-size: 18px;
@@ -161,10 +163,12 @@ form p a{
         top: 50%;
         left: 50%;
         transform: translate(5%,-83%);
-        background: rgb(226, 132, 200,0.5);
+        backdrop-filter: blur(15px);
         padding: 50px 60px 70px;
         border-radius: 40px;
-        box-shadow: 10px 10px rgb(92, 2, 92);
+        border: 3px solid #5c025c;
+        background: transparent;
+        backdrop-filter: blur(25px);
     }
 }
 
@@ -193,9 +197,11 @@ form p a{
         top: 50%;
         left: 50%;
         transform: translate(35%,-83%);
-        background: rgb(226, 132, 200,0.5);
         padding: 50px 60px 70px;
         border-radius: 40px;
         box-shadow: 10px 10px rgb(92, 2, 92);
+        border: 3px solid #5c025c;
+        background: transparent;
+        backdrop-filter: blur(25px);
     }
 }
