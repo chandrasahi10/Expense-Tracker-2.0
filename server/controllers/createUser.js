@@ -58,7 +58,7 @@ exports.doSignUp = (req,res)=>{
         }else{
             const tableName = sanitizeEmailForTableName(email);
 
-            const createUserTableQuery = `CREATE TABLE IF NOT EXISTS ${tableName}_data (
+            const createUserTableQuery = `CREATE TABLE IF NOT EXISTS ${tableName} (
                 id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
                 product VARCHAR(255) NOT NULL,
                 category VARCHAR(255) NOT NULL,
@@ -146,7 +146,7 @@ exports.doSignUp = (req,res)=>{
                   }
                   req.session.email = email;
                   console.log('Login Successful');
-                  res.sendFile(path.join(__dirname, '../..', 'views', 'home.html'));
+                  res.sendFile(path.join(__dirname, '../..', 'views', 'expenseTable.html'));
               });
           });
       }

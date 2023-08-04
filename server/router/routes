@@ -11,6 +11,13 @@ router.get('/signup',createUser.viewSignUp);
 router.post('/home',createUser.doSignUp);
 router.get('/home',home.isAuthenticated,home.viewHome);
 
-router.post('/addedData',home.addData);
+router.get('/expenses',home.isAuthenticated, home.viewExpense);
+
+router.post('/addedData',home.isAuthenticated, home.addData);
+
+router.get('/getExpenses',home.isAuthenticated, home.getExpenses); 
+
+router.get('/deleteExpense/:id', home.deleteExpense);
+
 
 module.exports = router;
