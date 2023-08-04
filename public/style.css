@@ -24,11 +24,12 @@
     max-width: 450px;
     top: 50%;
     left: 50%;
-    transform: translate(180%,70%);
+    transform: translate(185%,70%);
     background: #fff;
     padding: 50px 60px 70px;
     text-align: center;
-    box-shadow: 10px 10px 12px rgb(48, 46, 46);
+    box-shadow: 10px 10px 12px black;
+    border: 3px solid black;
     border-radius: 40px;
 }
 
@@ -40,10 +41,10 @@
     transform: translate(50%,-83%);
     padding: 50px 60px 70px;
     border-radius: 40px;
-    box-shadow: 10px 10px #5c025c;
-    border: 3px solid #5c025c;
-    background: transparent;
-    backdrop-filter: blur(25px);
+    box-shadow: 10px 10px #210221;
+    border: 3px solid #210221;
+    background: #fff;
+    backdrop-filter: blur(20px);
 }
 .description-box form p{
     font-size: 18px;
@@ -142,6 +143,7 @@ form p a{
     .container{
         height: 200vh;
         max-width: 100%;
+        background: #b12fb1;
     }
 
     .form-box{
@@ -153,7 +155,8 @@ form p a{
         background: #fff;
         padding: 50px 60px 70px;
         text-align: center;
-        box-shadow: 10px 10px 12px rgb(48, 46, 46);
+        box-shadow: 10px 10px 12px black;
+        border: 3px solid black;
         border-radius: 40px;
     }
 
@@ -163,12 +166,12 @@ form p a{
         top: 50%;
         left: 50%;
         transform: translate(5%,-83%);
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(20px);
         padding: 50px 60px 70px;
         border-radius: 40px;
-        border: 3px solid #5c025c;
-        background: transparent;
-        backdrop-filter: blur(25px);
+        box-shadow: 10px 10px #210221;
+        border: 3px solid #210221;
+        background: white;
     }
 }
 
@@ -176,6 +179,7 @@ form p a{
     .container{
         height: 400vh;
         max-width: 100%;
+        background: #b12fb1;
     }
 
     .form-box{
@@ -187,7 +191,8 @@ form p a{
         background: #fff;
         padding: 50px 60px 70px;
         text-align: center;
-        box-shadow: 10px 10px 12px rgb(48, 46, 46);
+        box-shadow: 10px 10px 12px black;
+        border: 3px solid black;
         border-radius: 40px;
     }
 
@@ -199,9 +204,9 @@ form p a{
         transform: translate(35%,-83%);
         padding: 50px 60px 70px;
         border-radius: 40px;
-        box-shadow: 10px 10px rgb(92, 2, 92);
-        border: 3px solid #5c025c;
-        background: transparent;
-        backdrop-filter: blur(25px);
+        box-shadow: 10px 10px #210221;
+        border: 3px solid #210221;
+        background: white;
+        backdrop-filter: blur(20px);
     }
 }

@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const createUser = require(path.join(__dirname,'..','controllers','createUser.js'));
-const home = require(path.join(__dirname,'..','controllers','home.js'));
+const createUser = require(path.join(__dirname,'..','controllers','createUser'));
+const home = require(path.join(__dirname,'..','controllers','home'));
 
 
 const router = express.Router();
@@ -9,8 +9,8 @@ const router = express.Router();
 router.get('/signup',createUser.viewSignUp);
 
 router.post('/home',createUser.doSignUp);
-router.get('/home',home.viewHome);
+router.get('/home',home.isAuthenticated,home.viewHome);
 
-
+router.post('/addedData',home.addData);
 
 module.exports = router;

@@ -25,6 +25,11 @@ exports.doSignUp = (req,res)=>{
     const password = req.body.password;
     const formAction = req.body.formAction;
 
+    const sanitizeEmailForTableName = (email) => {
+        const sanitizedEmail = email.replace(/[^a-zA-Z0-9]/g, '');
+        return `${sanitizedEmail}_data`;
+    };
+
     if(formAction==='signUp'){
     
     if(!name || !email || !password){
@@ -51,6 +56,24 @@ exports.doSignUp = (req,res)=>{
         `);
 
         }else{
+            const tableName = sanitizeEmailForTableName(email);
+
+            const createUserTableQuery = `CREATE TABLE IF NOT EXISTS ${tableName}_data (
+                id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                product VARCHAR(255) NOT NULL,
+                category VARCHAR(255) NOT NULL,
+                expense DOUBLE(10,2) NOT NULL,
+                \`description\` TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+              )`;
+           
+            pool.execute(createUserTableQuery, (error, results) => {
+                if (error) {
+                    console.log('Unable to create table',error);
+                }else{
+                    console.log('Table created successfully for user');
+                }
+            });
 
             const saltRounds = 10;
 
@@ -66,6 +89,7 @@ exports.doSignUp = (req,res)=>{
                         console.log('Error inserting data', err);
                         return;
                     }
+                    req.session.email = email;
                     console.log('Data inserted successfully');
                     res.sendFile(path.join(__dirname, '../..', 'views', 'home.html'));
                 });
@@ -120,7 +144,7 @@ exports.doSignUp = (req,res)=>{
                       </script>
                   `);
                   }
-      
+                  req.session.email = email;
                   console.log('Login Successful');
                   res.sendFile(path.join(__dirname, '../..', 'views', 'home.html'));
               });
@@ -128,3 +152,4 @@ exports.doSignUp = (req,res)=>{
       }
     }
 
+ 

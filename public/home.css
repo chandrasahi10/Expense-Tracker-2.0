@@ -20,12 +20,12 @@ body{
 
 .wrapper{
     width: 420px;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,.2);
+    background: rgb(185, 106, 185,0.4);
+    border: 2px solid black;
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 40px;
     padding: 30px 40px;
 }
 
@@ -105,10 +105,18 @@ body{
     .wrapper{
         width: 420px;
         margin-top: 120px;
+        border-radius: 40px;
+        background-color: rgb(209, 117, 209,0.4);
+        border: 3px solid black;
+        
     }
 
     .input-box select{
         color: #fff;
+    }
+
+    body{
+        background: #b12fb1;
     }
 }
 
@@ -117,9 +125,17 @@ body{
         width: 420px;
         margin-left: 10px;
         margin-right: 10px;
+        border-radius: 40px;
+        background-color: rgb(209, 117, 209,0.4
+        );
+        border: 3px solid black;
     }
 
     .input-box select{
         color: #fff;
+    }
+
+    body{
+        background: #b12fb1;
     }
 }
