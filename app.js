@@ -4,6 +4,7 @@ const path = require('path');
 const routes = require('./server/router/routes');
 const mysql = require('mysql2');
 const session = require('express-session');
+require('dotenv').config;
 
 const port = 3000;
 

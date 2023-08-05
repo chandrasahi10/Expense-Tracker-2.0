@@ -64,6 +64,8 @@ exports.doSignUp = (req,res)=>{
                 category VARCHAR(255) NOT NULL,
                 expense DOUBLE(10,2) NOT NULL,
                 \`description\` TEXT NOT NULL,
+                leaderboard_id INT NOT NULL,
+                FOREIGN KEY (leaderboard_id) REFERENCES Leaderboard(id) ON DELETE CASCADE,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
               )`;
            

@@ -98,11 +98,52 @@ body{
     color: #333;
     font-weight: 600;
     top:17px;
-    right: 10px;
+    right: 230px;
     position: absolute;
     text-decoration: none;
     padding-left: 14px;
     padding-top: 10px;
+}
+
+#btn4{
+    width: 150px;
+    height: 45px;
+    border: none;
+    outline: none;
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    top:17px;
+    left: 10px;
+    position: absolute;
+    text-decoration: none;
+    padding-left: 47px;
+    padding-top: 10px;
+}
+
+#btn3{
+    width: 205px;
+    height: 46px;
+    border: none;
+    outline: none;
+    background: rgb(238, 130, 238,0.9);
+    border-radius: 40px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    top:17px;
+    right: 10px;
+    position: absolute;
+    text-decoration: none;
+    padding-left: 14px;
+    padding-top: 8px;
 }
 
 @media (max-width :900px) and (orientation: landscape) {

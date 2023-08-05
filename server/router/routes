@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const createUser = require(path.join(__dirname,'..','controllers','createUser'));
 const home = require(path.join(__dirname,'..','controllers','home'));
+const leaderboard = require(path.join(__dirname,'..','controllers','leaderBoard'));
 
 
 const router = express.Router();
@@ -17,7 +18,11 @@ router.post('/addedData',home.isAuthenticated, home.addData);
 
 router.get('/getExpenses',home.isAuthenticated, home.getExpenses); 
 
-router.get('/deleteExpense/:id', home.deleteExpense);
+router.get('/deleteExpense/:id',home.isAuthenticated, home.deleteExpense);
+
+router.get('/viewLeaderboardData', leaderboard.viewLeaderBoard);
+
+router.get('/getLeaderboardData', leaderboard.getLeaderBoardData);
 
 
 module.exports = router;
