@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const createUser = require(path.join(__dirname,'..','controllers','createUser'));
 const home = require(path.join(__dirname,'..','controllers','home'));
-const leaderboard = require(path.join(__dirname,'..','controllers','leaderBoard'));
+const premium = require(path.join(__dirname,'..','controllers','premium'));
 
 
 const router = express.Router();
@@ -20,6 +20,8 @@ router.get('/getExpenses',home.isAuthenticated, home.getExpenses);
 
 router.get('/deleteExpense/:id',home.isAuthenticated, home.deleteExpense);
 
-router.get('/viewLeaderboardData', leaderboard.viewLeaderBoard);
+router.get('/LeaderboardData', premium.getLeaderBoardData);
+
+router.get('/viewLeaderboardData', premium.viewLeaderBoard);
 
 module.exports = router;

@@ -1,31 +1,46 @@
-var tabs = document.querySelectorAll(".lboard_tabs ul li");
-var today = document.querySelector(".today");
-var month = document.querySelector(".month");
-var year = document.querySelector(".year");
-var items = document.querySelectorAll(".lboard_item");
+const leaderboardTable = document.getElementById('leaderboard'); 
 
-tabs.forEach(function(tab){
-    tab.addEventListener("click",function(){
-        var currentDataLi = tab.getAttribute("data-li");
+fetch('/LeaderboardData')
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((entry) => {
+      const row = leaderboardTable.insertRow();
+      row.insertCell(0).textContent = entry.rank;
+      row.insertCell(1).textContent = entry.name;
+      row.insertCell(2).textContent = entry.totalExpense;
 
-        tabs.forEach(function(tab){
-            tab.classList.remove("active");
-        })
+      const ratingCell = row.insertCell(3);
+      const rating = calculateRating(entry.totalExpense);
+      ratingCell.innerHTML = generateStars(rating);
+    });
+  })
+  .catch((error) => {
+    console.error('Error fetching leaderboard data', error);
+  });
 
-        tab.classList.add("active");
+  
+  function calculateRating(totalExpense) {
+    if (totalExpense >= 10000) {
+      return 6; 
+    } else if (totalExpense >= 8000) {
+      return 5; 
+    }else if (totalExpense >= 6000) {
+      return 4;
+    }else if (totalExpense >= 4000) {
+      return 3; 
+    }else if (totalExpense >= 2000) {
+      return 2;
+    }else{
+      return 1;
+    }
+  }
 
-        items.forEach(function(item){
-            item.style.display = "none";
-        })
-
-        if(currentDataLi === "today"){
-           today.style.display = "block";
-        }else if(currentDataLi === "month"){
-           month.style.display = "block";
-        }else{
-           year.style.display = "block";
-        }
-    })
-})
-
+  function generateStars(rating) {
+    let stars = '';
+    for (let i = 0; i < rating; i++) {
+      stars += '<span class="rating-star"></span>'; 
+    }
+    return stars;
+  }
+  
  

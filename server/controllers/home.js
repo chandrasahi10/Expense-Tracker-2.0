@@ -45,10 +45,10 @@ exports.addData = (req, res) => {
   const query = `SELECT Name from User where Email = ?`
   pool.execute(query, [email], (err, result) => {
     if (err) {
-      console.log('Error inserting data into Leaderboard', err);
+      console.log('Error selecting name', err);
       return;
     }
-    console.log('Data inserted into Leaderboard successfully');
+    console.log('Name selected successfully');
   
    const name = result[0].Name;
 
