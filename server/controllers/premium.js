@@ -11,7 +11,7 @@ const pool = mysql.createPool({
 
 exports.getLeaderBoardData = (req, res) => {
   
-  const query = `SELECT Name, SUM(Expense) AS totalExpense FROM Leaderboard GROUP BY Name ORDER BY totalExpense DESC`;
+  const query = `SELECT Email, Name, SUM(Expense) AS totalExpense FROM Leaderboard GROUP BY Email,Name ORDER BY totalExpense DESC`;
 
   pool.execute(query, (err, result) => {
     if (err) {

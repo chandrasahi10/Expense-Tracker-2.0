@@ -4,7 +4,7 @@ const path = require('path');
 const routes = require('./server/router/routes');
 const mysql = require('mysql2');
 const session = require('express-session');
-require('dotenv').config;
+require('dotenv').config();
 
 const port = 3000;
 
@@ -35,6 +35,10 @@ const pool = mysql.createPool({
 });
 
 app.use('/',routes);
+
+app.get('/getkey',(req,res)=>{
+    res.status(200).json({key: process.env.RAZORPAY_ID_KEY});
+});
 
 app.listen(port);
 
