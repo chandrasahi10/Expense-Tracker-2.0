@@ -3,12 +3,15 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const routes = require('./server/router/routes');
 const mysql = require('mysql2');
+const cors = require('cors');
 const session = require('express-session');
 require('dotenv').config();
 
 const port = 3000;
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 

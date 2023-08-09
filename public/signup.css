@@ -139,6 +139,7 @@ form p a{
     color: #555;
 }
 
+
 @media (max-width :500px) and (orientation: portrait) {
     .container{
         height: 200vh;

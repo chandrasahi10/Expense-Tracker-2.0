@@ -20,12 +20,41 @@ exports.isAuthenticated = (req, res, next) => {
 
 
 exports.viewHome = (req,res) =>{
-    res.sendFile(path.join(__dirname, '../..', 'views', 'home.html'));
+  const email = req.session.email;
+
+  const query = 'SELECT Premium FROM User WHERE Email = ?'
+  pool.execute(query,[email],(err,result)=>{
+    if(err){
+      console.log(err)
+    }else{
+      if(result[0].Premium===0){
+        res.sendFile(path.join(__dirname, '../..', 'views', 'home.html'));
+      }else if(result[0].Premium===1){
+        res.sendFile(path.join(__dirname, '../..', 'views', 'premiumHome.html'));
+      }
+    }
+  })
 }
 
 exports.viewExpense = (req,res) =>{
-    res.sendFile(path.join(__dirname, '../..', 'views', 'expenseTable.html'));
+
+    const email = req.session.email;
+
+    const query = 'SELECT Premium FROM User WHERE Email = ?'
+    pool.execute(query,[email],(err,result)=>{
+      if(err){
+        console.log(err)
+      }else{
+        if(result[0].Premium===0){
+          res.sendFile(path.join(__dirname, '../..', 'views', 'expenseTable.html'));
+        }else if(result[0].Premium===1){
+          res.sendFile(path.join(__dirname, '../..', 'views', 'premiumExpenseTable.html'));
+        }
+      }
+    })
+    
 }
+
 
 exports.addData = (req, res) => {
   

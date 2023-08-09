@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="premiumHome.css">
+</head>
+<body>
+    <a href="/expenses" id= "btn2">View Expenses</a>
+    <a id= "head">You are a Premium User <span style='font-size:20px; margin-left: 5px;'>&#129311;</span></a>
+    <a href="#" id= "btn4">Logout</a>
+    
+    <div class="wrapper">
+        <form action="/addedData" method="POST" id="myForm">
+            <h1>Expense</h1>
+            <div class="input-box">
+                <input type="text" name="product" placeholder="Product Name">
+            </div>
+            
+            <div class="input-box">
+                <select name="category" id="category">
+                    <option value="Food Item">Food Item</option>
+                    <option value="Electronic Accessory">Electronic Accessory</option>
+                    <option value="Skin-care Product">Skin-care Product</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Clothing">Clothing</option>
+                  </select>
+            </div>
+           
+
+            <div class="input-box">
+                <input type="text" name="expense" placeholder="Expense">
+            </div>
+
+            <div class="input-box">
+                <input type="text"name="description" placeholder="Description">
+            </div>
+
+            <button type="submit" class="btn">Add Expense</button>
+        </form>
+    </div>
+    <script src="home.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</body>
+</html>

@@ -1,9 +1,8 @@
 const premium = document.getElementById('btn3');
 
 premium.addEventListener('click', () => {
- initiateRazorpayPayment();
+  initiateRazorpayPayment()
 });
-
 
 
 const initiateRazorpayPayment = () => { 
@@ -28,9 +27,9 @@ fetch('/checkout', {
    key: keyData.key, 
    amount: orderData.order.amount, 
    currency: "INR",
-   name: "Chandrachud",
-   description: "Test Transaction",
-   image: "https://example.com/your_logo",
+   name: "Expensy",
+   description: "Premium Membership Subscription",
+   image: "logo.jpg",
    order_id: orderData.order.id, 
    callback_url: "http://localhost:3000/paymentverification",
    prefill: {
@@ -58,4 +57,17 @@ console.error('Error fetching Razorpay key:', error);
 });
 
 }  
+
+
+ 
+
+  
+
+
+
+
+
+
+
+
 

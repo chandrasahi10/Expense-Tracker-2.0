@@ -148,7 +148,19 @@ exports.doSignUp = (req,res)=>{
                   }
                   req.session.email = email;
                   console.log('Login Successful');
-                  res.sendFile(path.join(__dirname, '../..', 'views', 'expenseTable.html'));
+                  
+                  const query = 'SELECT Premium FROM User WHERE Email = ?'
+                  pool.execute(query,[email],(err,result)=>{
+                    if(err){
+                    console.log(err)
+                    }else{
+                    if(result[0].Premium===0){
+                        res.sendFile(path.join(__dirname, '../..', 'views', 'home.html'));
+                    }else if(result[0].Premium===1){
+                        res.sendFile(path.join(__dirname, '../..', 'views', 'premiumHome.html'));
+                    }
+                    }
+                 })
               });
           });
       }

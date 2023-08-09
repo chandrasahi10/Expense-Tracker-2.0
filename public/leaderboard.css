@@ -23,7 +23,7 @@ html, body{
         border-collapse: separate;
         border-spacing: 0;
         overflow: hidden;
-        border-radius: 5px;
+        border-radius: 10px;
 }
 
     .custom-table th,

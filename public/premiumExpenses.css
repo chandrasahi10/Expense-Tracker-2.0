@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Poppins",sans-serif;
+}
+ 
+ body{
+    background: url('home.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+
+ }
+
+ .container {
+        margin-top: 40px;
+    }
+
+.custom-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+}
+
+    .custom-table th,
+    .custom-table td {
+        border: 1px solid #1b1a1a;
+        padding: 8px;
+    }
+
+    #btn2{
+        width: 150px;
+        height: 45px;
+        border: none;
+        outline: none;
+        background: #fff;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+        top:17px;
+        right: 170px;
+        position: absolute;
+        text-decoration: none;
+        padding-left: 22px;
+        padding-top: 10px;
+    }
+    
+    #btn3{
+        width: 150px;
+        height: 45px;
+        border: none;
+        outline: none;
+        background: #fff;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+        top:17px;
+        right: 10px;
+        position: absolute;
+        text-decoration: none;
+        padding-left: 22px;
+        padding-top: 10px;
+    }
+
+    #btn4{
+        width: 150px;
+        height: 45px;
+        border: none;
+        outline: none;
+        background: #fff;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+        top:17px;
+        left: 10px;
+        position: absolute;
+        text-decoration: none;
+        padding-left: 47px;
+        padding-top: 10px;
+    }
+    
+    
