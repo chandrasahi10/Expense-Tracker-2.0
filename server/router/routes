@@ -29,4 +29,7 @@ router.post('/checkout',payment.checkOut);
 
 router.post('/paymentverification',payment.paymentVerification);
 
+router.get('/forgotpassword',createUser.viewForgotPassword);
+router.post('/forgotpassword',createUser.resetPassword);
+
 module.exports = router;

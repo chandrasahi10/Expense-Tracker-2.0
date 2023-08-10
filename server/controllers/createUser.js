@@ -1,6 +1,10 @@
 const mysql = require('mysql2');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const {createTransport} = require('nodemailer');
+require('dotenv').config();
+
+
 
 const pool = mysql.createPool({
     connectionLimit: 100,
@@ -15,9 +19,11 @@ exports.viewSignUp = (req,res)=>{
     res.sendFile(path.join(__dirname,'../..','views','signup.html'));
 }
 
-exports.checkUser = (req,res) => {
-    
-};
+exports.viewForgotPassword = (req,res)=>{
+    res.sendFile(path.join(__dirname,'../..','views','forgotPassword.html'));
+}
+
+
 
 exports.doSignUp = (req,res)=>{
     const name = req.body.name;
@@ -166,4 +172,46 @@ exports.doSignUp = (req,res)=>{
       }
     }
 
- 
+   
+    
+  
+exports.resetPassword  = (req, res) => {
+
+    const email = req.body.email
+    const password = process.env.SMTP_KEY
+      
+    const transporter = createTransport({
+        host : 'smtp-relay.brevo.com',
+        port: 587,
+        auth: {
+            user: 'chandrachudsahi@gmail.com',
+            pass: password
+        },
+    });
+
+    const mailOptions = {
+        from: "noreply@expensy.com",
+        to : email,
+        subject : 'Reset Your Password',
+        text: 'Click here to reset your password'
+    };
+
+    transporter.sendMail(mailOptions, (error,info)=>{
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Email sent:' + info.response);
+            
+            const alertScript = `
+            <script>
+                alert('Email with link to reset your password has been sent. Please check your inbox.');
+                window.location.href = '/signup'; 
+            </script>
+            `;
+
+            res.send(alertScript);
+
+        }
+    });
+
+}
