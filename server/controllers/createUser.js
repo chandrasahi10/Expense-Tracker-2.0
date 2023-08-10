@@ -192,8 +192,28 @@ exports.resetPassword  = (req, res) => {
     const mailOptions = {
         from: "noreply@expensy.com",
         to : email,
-        subject : 'Reset Your Password',
-        text: 'Click here to reset your password'
+        subject : ' 🎩 Magic at Work: Reviving Your Expensy Powers!',
+        text: 
+       
+      `Greetings,
+
+       Oops! It seems like you've misplaced your Expensy wand and can't access your treasure trove of financial wizardry. No worries, we've got the magic spell to get you back on track!
+       
+       Here's your spellbinding path to regain control:
+
+       🔑 [Click here] to unlock the portal to password reset magic.
+
+       🪄 Wave your wand and conjure up a brand new spellbinding password.
+
+       ✨ Presto chango! You're back in full control of your financial realm. Remember, this password is as secret as your Hogwarts acceptance letter.
+
+       If you suspect dark forces at play and didn't trigger this enchantment, just ignore this owl's message and continue your magical journey.
+       
+       Magically yours,
+       The Enchanted Expensy Team 🧙‍♂️🔮
+        
+
+       This email is protected by © Expensy`
     };
 
     transporter.sendMail(mailOptions, (error,info)=>{
@@ -213,5 +233,4 @@ exports.resetPassword  = (req, res) => {
 
         }
     });
-
 }
