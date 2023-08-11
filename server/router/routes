@@ -11,6 +11,7 @@ const router = express.Router();
 router.get('/signup',createUser.viewSignUp);
 
 router.post('/home',createUser.doSignUp);
+
 router.get('/home',home.isAuthenticated,home.viewHome);
 
 router.get('/expenses',home.isAuthenticated, home.viewExpense);
@@ -30,6 +31,14 @@ router.post('/checkout',payment.checkOut);
 router.post('/paymentverification',payment.paymentVerification);
 
 router.get('/forgotpassword',createUser.viewForgotPassword);
-router.post('/forgotpassword',createUser.resetPassword);
+
+router.post('/forgotpassword',createUser.resetPasswordMail);
+
+router.get('/reset-password/:token', (req,res) =>{
+
+    res.sendFile(path.join(__dirname,'../..','views','resetPassword.html'))
+});
+
+router.post('/reset-password',createUser.resetPassword);
 
 module.exports = router;
