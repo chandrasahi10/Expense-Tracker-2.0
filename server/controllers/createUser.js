@@ -224,7 +224,7 @@ exports.resetPasswordMail  = (req, res) => {
         if (results.length === 0) {
             return res.send(`
             <script>
-            alert('Check your mail');
+            alert('Please check your email address and try again');
             window.history.back();
             </script>
            `);
@@ -289,10 +289,9 @@ exports.resetPassword = (req,res) => {
 
     const password = req.body.password;
     const token = req.body.token;
-    console.log(token)
 
-    const query1 = 'SELECT email from Forgot_Password where uuid = ?'
-    pool.execute(query1,[token], (err,result)=>{
+    const query1 = 'SELECT email from Forgot_Password where uuid = ? AND is_active = ?'
+    pool.execute(query1,[token,true], (err,result)=>{
         if(err){
             console.log(err)
             return
@@ -300,7 +299,6 @@ exports.resetPassword = (req,res) => {
 
         if (result.length > 0) {
             const email = result[0].email;
-            console.log(email);
         
 
     const saltRounds = 10;
@@ -311,7 +309,6 @@ exports.resetPassword = (req,res) => {
                     return;
                 }
                 const newHashedPassword = hashedPassword
-                console.log(newHashedPassword);
             
 
     const query2 = 'UPDATE User SET Password = ? WHERE Email = ?'
@@ -325,10 +322,10 @@ exports.resetPassword = (req,res) => {
                 if(err){
                     console.log(err)
                 }else{
-                    console.log('Updated status successfully');
+                    console.log('Updated request status successfully');
                     return res.send(`
                       <script>
-                          alert('Your password has been updates successfully');
+                          alert('Your password has been updated successfully');
                           window.history.back();
                       </script>
                   `);
