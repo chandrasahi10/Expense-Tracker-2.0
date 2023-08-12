@@ -124,7 +124,55 @@ exports.getExpenses = (req, res) => {
 
     const email = req.session.email;
     const tableName = sanitizeEmailForTableName(email);
-    const query = `SELECT leaderboard_id,product,category,expense,description FROM ${tableName}`;
+    const query = `SELECT leaderboard_id,product,category,expense,description, DATE_FORMAT(created_at, '%Y-%m-%d') as date FROM ${tableName}`;
+    
+    pool.execute(query, (err, result) => {
+      if (err) {
+        console.log('Error fetching data', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+  
+      // Send the expenses data as a JSON response to the client
+      return res.json(result);
+    });
+  };
+
+
+
+  exports.getMonthlyExpenses = (req, res) => {
+
+    const sanitizeEmailForTableName = (email) => {
+        const sanitizedEmail = email.replace(/[^a-zA-Z0-9]/g, '');
+        return `${sanitizedEmail}_data`;
+    };
+
+    const email = req.session.email;
+    const tableName = sanitizeEmailForTableName(email);
+    const query = `SELECT leaderboard_id,product,category,expense,description, DATE_FORMAT(created_at, '%M') as month FROM ${tableName} ORDER BY MONTH(created_at)`;
+    
+    pool.execute(query, (err, result) => {
+      if (err) {
+        console.log('Error fetching data', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+  
+      // Send the expenses data as a JSON response to the client
+      return res.json(result);
+    });
+  };
+
+
+
+  exports.getYearlyExpenses = (req, res) => {
+
+    const sanitizeEmailForTableName = (email) => {
+        const sanitizedEmail = email.replace(/[^a-zA-Z0-9]/g, '');
+        return `${sanitizedEmail}_data`;
+    };
+
+    const email = req.session.email;
+    const tableName = sanitizeEmailForTableName(email);
+    const query = `SELECT leaderboard_id,product,category,expense,description, DATE_FORMAT(created_at, '%Y') as year FROM ${tableName} ORDER BY YEAR(created_at)`;
     
     pool.execute(query, (err, result) => {
       if (err) {

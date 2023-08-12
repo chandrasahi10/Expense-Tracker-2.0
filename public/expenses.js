@@ -13,6 +13,7 @@ fetch('/getExpenses')
           <td>${expense.category}</td>
           <td>${expense.expense}</td>
           <td>${expense.description}</td>
+          <td>${expense.date}</td>
           <td class="text-center">
             <a href="/deleteExpense/${expense.leaderboard_id}" class="btn btn-sm btn-outline-danger btn-small"><i class="bi bi-person-x"></i> Delete</a>
           </td>

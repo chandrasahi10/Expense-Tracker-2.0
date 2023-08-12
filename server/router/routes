@@ -20,6 +20,10 @@ router.post('/addedData',home.isAuthenticated, home.addData);
 
 router.get('/getExpenses',home.isAuthenticated, home.getExpenses); 
 
+router.get('/monthly-expenses', home.getMonthlyExpenses);
+
+router.get('/yearly-expenses', home.getYearlyExpenses);
+
 router.get('/deleteExpense/:id',home.isAuthenticated, home.deleteExpense);
 
 router.get('/LeaderboardData', premium.getLeaderBoardData);

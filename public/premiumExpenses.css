@@ -22,6 +22,7 @@ html, body{
         border-collapse: separate;
         border-spacing: 0;
         overflow: hidden;
+        margin-top: 80px;
 }
 
     .custom-table th,
@@ -29,6 +30,33 @@ html, body{
         border: 1px solid #1b1a1a;
         padding: 8px;
     }
+
+.custom-table2 {
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+        margin-top: 100px;
+}
+
+    .custom-table2 th,
+    .custom-table2 td {
+        border: 1px solid #1b1a1a;
+        padding: 8px;
+}
+
+.custom-table3 {
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    margin-top: 100px;
+}
+
+.custom-table3 th,
+.custom-table3 td {
+    border: 1px solid #1b1a1a;
+    padding: 8px;
+}
+
 
     #btn2{
         width: 150px;
@@ -87,6 +115,66 @@ html, body{
         position: absolute;
         text-decoration: none;
         padding-left: 47px;
+        padding-top: 10px;
+    }
+
+    #btn5{
+        width: 180px;
+        height: 45px;
+        border: none;
+        outline: none;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+        top:130px;
+        left: 120px;
+        position: absolute;
+        text-decoration: none;
+        padding-left: 30px;
+        padding-top: 10px;
+    }
+
+    #btn6{
+        width: 230px;
+        height: 45px;
+        border: none;
+        outline: none;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+        top:320px;
+        left: 120px;
+        position: absolute;
+        text-decoration: none;
+        padding-left: 43px;
+        padding-top: 10px;
+    }
+
+    #btn7{
+        width: 230px;
+        height: 45px;
+        border: none;
+        outline: none;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+        top:510px;
+        left: 120px;
+        position: absolute;
+        text-decoration: none;
+        padding-left: 48px;
         padding-top: 10px;
     }
     
