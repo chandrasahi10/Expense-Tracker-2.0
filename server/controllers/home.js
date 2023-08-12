@@ -1,5 +1,14 @@
 const path = require('path');
 const mysql = require('mysql2');
+const AWS = require('aws-sdk');
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_KEY,
+  region: process.env.REGION
+});
+
+const s3 = new AWS.S3();
 
 const pool = mysql.createPool({
     connectionLimit: 100,
@@ -207,3 +216,45 @@ exports.getExpenses = (req, res) => {
       }
     });
   };
+
+  exports.awsHandle = (req, res) => {
+
+    const sanitizeEmailForTableName = (email) => {
+    const sanitizedEmail = email.replace(/[^a-zA-Z0-9]/g, '');
+    return `${sanitizedEmail}_data`;
+  };
+
+  const email = req.session.email;
+  const tableName = sanitizeEmailForTableName(email);
+  const currentDate = new Date().toISOString();
+    
+    const query = `SELECT leaderboard_id,product,category,expense,description, DATE_FORMAT(created_at, '%Y-%m-%d') as date FROM ${tableName}`
+    pool.execute(query, (error, results) => {
+      if (error) {
+        return res.status(500).json({ error: 'Error fetching expenses' });
+      }
+  
+      const expensesText = results.map(row => `${row.leaderboard_id},${row.product},${row.category},${row.expense},${row.description},${row.date}`).join('\n');
+
+      const params = {
+        Bucket: process.env.BUCKET_NAME,
+        Key: `${tableName}_${currentDate}.txt`,
+        Body: expensesText
+      };
+  
+      s3.upload(params, (s3Error, s3Data) => {
+        if (s3Error) {
+          return res.status(500).json({ error: 'Error uploading expenses to S3' });
+        }
+  
+        const signedUrl = s3.getSignedUrl('getObject', {
+          Bucket:  process.env.BUCKET_NAME,
+          Key: `${tableName}_${currentDate}.txt`,
+          Expires: 3600 
+        });
+  
+        return res.json({ downloadUrl: signedUrl });
+      });
+    });
+  };
+  

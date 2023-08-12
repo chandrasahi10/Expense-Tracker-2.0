@@ -45,4 +45,6 @@ router.get('/reset-password/:token', (req,res) =>{
 
 router.post('/reset-password',createUser.resetPassword);
 
+router.get('/generate-expenses-file',home.awsHandle);
+
 module.exports = router;

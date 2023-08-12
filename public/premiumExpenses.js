@@ -82,7 +82,18 @@ fetch('/getExpenses')
     .catch(error => console.error('Error fetching data:', error));
 
 
+    const downloadButton = document.getElementById('downloadButton');
 
+    downloadButton.addEventListener('click', () => {
+      // Make a request to the backend to get the signed URL
+      fetch('/generate-expenses-file')
+        .then(response => response.json())
+        .then(data => {
+          // Trigger download using the signed URL
+          window.location.href = data.downloadUrl;
+        })
+        .catch(error => console.error('Error:', error));
+    });
 
 
 
