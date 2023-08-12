@@ -3,13 +3,13 @@
 html, body{
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: auto;
     font-family: "Poppins",sans-serif;
 }
  
- body{
+body{
     background: url('home.jpg') no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
 
  }
@@ -22,7 +22,7 @@ html, body{
         border-collapse: separate;
         border-spacing: 0;
         overflow: hidden;
-        margin-top: 80px;
+        margin-top: 15px;
 }
 
     .custom-table th,
@@ -35,7 +35,7 @@ html, body{
         border-collapse: separate;
         border-spacing: 0;
         overflow: hidden;
-        margin-top: 100px;
+        margin-top: 15px;
 }
 
     .custom-table2 th,
@@ -48,7 +48,7 @@ html, body{
     border-collapse: separate;
     border-spacing: 0;
     overflow: hidden;
-    margin-top: 100px;
+    margin-top: 15px;
 }
 
 .custom-table3 th,
@@ -117,66 +117,6 @@ html, body{
         padding-left: 47px;
         padding-top: 10px;
     }
-
-    #btn5{
-        width: 180px;
-        height: 45px;
-        border: none;
-        outline: none;
-        background: #57c4f3;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,.1);
-        cursor: pointer;
-        font-size: 16px;
-        color: #333;
-        font-weight: 600;
-        top:130px;
-        left: 120px;
-        position: absolute;
-        text-decoration: none;
-        padding-left: 30px;
-        padding-top: 10px;
-    }
-
-    #btn6{
-        width: 230px;
-        height: 45px;
-        border: none;
-        outline: none;
-        background: #ff81bc;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,.1);
-        cursor: pointer;
-        font-size: 16px;
-        color: #333;
-        font-weight: 600;
-        top:320px;
-        left: 120px;
-        position: absolute;
-        text-decoration: none;
-        padding-left: 43px;
-        padding-top: 10px;
-    }
-
-    #btn7{
-        width: 230px;
-        height: 45px;
-        border: none;
-        outline: none;
-        background: #4dea5f;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,.1);
-        cursor: pointer;
-        font-size: 16px;
-        color: #333;
-        font-weight: 600;
-        top:510px;
-        left: 120px;
-        position: absolute;
-        text-decoration: none;
-        padding-left: 48px;
-        padding-top: 10px;
-    }
     
     #downloadButton{
         width: 220px;
@@ -191,11 +131,60 @@ html, body{
         color: #333;
         font-weight: 600;
         top:17px;
-        left: 180px;
+        left: 170px;
         position: absolute;
         text-decoration: none;
         padding-left: 30px;
         padding-top: 10px;
     }
     
+    h4{
+        margin-top: 40px;
+        color: #fff;
+        font-weight: 800;
+        font-size: 25px;
+        text-align: center;
+        text-decoration: underline;
+    }
     
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 30px;
+      }
+      
+      .prev-btn,
+      .next-btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #fff;
+        color:black;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+      
+      .prev-btn:hover,
+      .next-btn:hover {
+        background-color: #ef9ccb;
+      }
+      
+      .current-page {
+        margin: 0 15px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .pagination button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+      
+      .pagination button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4);
+      }

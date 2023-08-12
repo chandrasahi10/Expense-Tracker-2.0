@@ -141,7 +141,6 @@ exports.getExpenses = (req, res) => {
         return res.status(500).json({ error: 'Internal Server Error' });
       }
   
-      // Send the expenses data as a JSON response to the client
       return res.json(result);
     });
   };
@@ -157,15 +156,14 @@ exports.getExpenses = (req, res) => {
 
     const email = req.session.email;
     const tableName = sanitizeEmailForTableName(email);
-    const query = `SELECT leaderboard_id,product,category,expense,description, DATE_FORMAT(created_at, '%M') as month FROM ${tableName} ORDER BY MONTH(created_at)`;
+    const query = `SELECT leaderboard_id,product,category,expense,description, DATE_FORMAT(created_at, '%M') as date FROM ${tableName} ORDER BY MONTH(created_at)`;
     
     pool.execute(query, (err, result) => {
       if (err) {
         console.log('Error fetching data', err);
         return res.status(500).json({ error: 'Internal Server Error' });
       }
-  
-      // Send the expenses data as a JSON response to the client
+
       return res.json(result);
     });
   };
@@ -181,7 +179,7 @@ exports.getExpenses = (req, res) => {
 
     const email = req.session.email;
     const tableName = sanitizeEmailForTableName(email);
-    const query = `SELECT leaderboard_id,product,category,expense,description, DATE_FORMAT(created_at, '%Y') as year FROM ${tableName} ORDER BY YEAR(created_at)`;
+    const query = `SELECT leaderboard_id,product,category,expense,description, DATE_FORMAT(created_at, '%Y') as date FROM ${tableName} ORDER BY YEAR(created_at)`;
     
     pool.execute(query, (err, result) => {
       if (err) {
@@ -189,7 +187,6 @@ exports.getExpenses = (req, res) => {
         return res.status(500).json({ error: 'Internal Server Error' });
       }
   
-      // Send the expenses data as a JSON response to the client
       return res.json(result);
     });
   };
@@ -257,4 +254,8 @@ exports.getExpenses = (req, res) => {
       });
     });
   };
+
+  exports.logout = (req,res) => {
+    res.sendFile(path.join(__dirname,'../..','views','signup.html'));
+  }
   

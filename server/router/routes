@@ -47,4 +47,6 @@ router.post('/reset-password',createUser.resetPassword);
 
 router.get('/generate-expenses-file',home.awsHandle);
 
+router.get('/logout',home.logout);
+
 module.exports = router;
