@@ -15,7 +15,8 @@ function renderExpenses() {
   for (let i = startIndex; i < endIndex && i < expensesData.length; i++) {
     const expense = expensesData[i];
     const row = document.createElement('tr');
-    row.innerHTML = `
+    row.innerHTML = 
+    `
       <td>${expense.leaderboard_id}</td>
       <td>${expense.product}</td>
       <td>${expense.category}</td>
@@ -24,8 +25,8 @@ function renderExpenses() {
       <td>${expense.date}</td>
       <td class="text-center">
         <a href="/deleteExpense/${expense.leaderboard_id}" class="btn btn-sm btn-outline-danger btn-small"><i class="bi bi-person-x"></i> Delete</a>
-      </td>
-    `;
+     </td>`;
+
     expensesTableBody.appendChild(row);
   }
 
@@ -70,7 +71,7 @@ nextBtn.addEventListener('click', () => {
 
 
 
-const premium = document.getElementById('btn3');
+ const premium = document.getElementById('btn3');
 
    premium.addEventListener('click', () => {
     initiateRazorpayPayment();

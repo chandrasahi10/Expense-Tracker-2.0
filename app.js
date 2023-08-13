@@ -5,7 +5,6 @@ const routes = require('./server/router/routes');
 const mysql = require('mysql2');
 const cors = require('cors');
 const session = require('express-session');
-const helmet = require('helmet');
 const morgan = require('morgan');
 const fs = require('fs');
 require('dotenv').config();
@@ -14,7 +13,7 @@ const app = express();
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname,'access.log'), {flags: 'a'});
 
-app.use(helmet());
+
 app.use(morgan('combined',{stream: accessLogStream}));
 
 app.use(cors());
