@@ -1,0 +1,5 @@
+::ffff:127.0.0.1 - - [13/Aug/2023:09:21:42 +0000] "GET /signup HTTP/1.1" 200 2536 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/116.0"
+::ffff:127.0.0.1 - - [13/Aug/2023:09:21:49 +0000] "GET /signup.css HTTP/1.1" 200 4045 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/116.0"
+::ffff:127.0.0.1 - - [13/Aug/2023:09:21:49 +0000] "GET /signup.js HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/116.0"
+::ffff:127.0.0.1 - - [13/Aug/2023:09:21:51 +0000] "GET /background.jpg HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/116.0"
+::ffff:127.0.0.1 - - [13/Aug/2023:09:21:52 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/116.0"

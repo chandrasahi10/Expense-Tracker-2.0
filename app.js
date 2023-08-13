@@ -5,11 +5,17 @@ const routes = require('./server/router/routes');
 const mysql = require('mysql2');
 const cors = require('cors');
 const session = require('express-session');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const fs = require('fs');
 require('dotenv').config();
 
-const port = 3000;
-
 const app = express();
+
+const accessLogStream = fs.createWriteStream(path.join(__dirname,'access.log'), {flags: 'a'});
+
+app.use(helmet());
+app.use(morgan('combined',{stream: accessLogStream}));
 
 app.use(cors());
 
@@ -21,7 +27,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname,'public')));
 
 app.use(session({
-    secret: '0542@cool',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true
 
@@ -30,10 +36,10 @@ app.use(session({
 
 const pool = mysql.createPool({
     connectionLimit: 100,
-    host: "localhost",
-    user: "root",
-    password: "0542@Cool",
-    database: "Expensy"
+    host         : process.env.DB_HOST,
+    user         : process.env.DB_USER,
+    password     : process.env.DB_PASSWORD,
+    database     : process.env.DB_NAME,
 
 });
 
@@ -43,6 +49,6 @@ app.get('/getkey',(req,res)=>{
     res.status(200).json({key: process.env.RAZORPAY_ID_KEY});
 });
 
-app.listen(port);
+app.listen(process.env.PORT||3000);
 
 
