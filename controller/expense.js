@@ -97,5 +97,5 @@ module.exports = {
     postItem: postItem,
     getItem: getItem,
     deleteItem: deleteItem,
-    download
+    download: download,
 }

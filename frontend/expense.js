@@ -159,7 +159,7 @@ function showLeaderBoard() {
     document.getElementById('message').appendChild(inputElement)
 }
 
-async function download() {
+ async function download(){
     const token = localStorage.getItem('token')
     axios.get('http://localhost:3000/expense/download', { headers: { "authentication": token } })
         .then((response) => {

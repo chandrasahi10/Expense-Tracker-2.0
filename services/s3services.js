@@ -1,6 +1,6 @@
 const AWS = require('aws-sdk');
+require('dotenv').config();
 
-// Initialize the S3 service
 const s3 = new AWS.S3({
     accessKeyId: process.env.IAM_USER_KEY,
     secretAccessKey: process.env.IAM_USER_SECRET
