@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem("token")
     const decoded = parseJwt(token)
     if (decoded.ispremium) {
-        document.getElementById('message').innerHTML = `<h5>you are primum user</h5>`
+        document.getElementById('message').innerHTML = `<h5>You are premium user !</h5>`
         showLeaderBoard()
         document.getElementById('rzp-button').style.visibility = "hidden"
     }
@@ -143,13 +143,13 @@ function showLeaderBoard() {
     document.getElementById('download').style.visibility = "visible"
     const inputElement = document.createElement('input')
     inputElement.type = 'button'
-    inputElement.value = 'show leaderboard'
+    inputElement.value = 'Show Leaderboard'
     inputElement.onclick = async () => {
         const token = localStorage.getItem('token')
         const response = await axios.get('http://localhost:3000/premium/leaderboard', { headers: { "authentication": token } })
 
         const leaderboard = document.getElementById('leaderboard')
-        leaderboard.innerHTML = `<h5> leader board</h5>`
+        leaderboard.innerHTML = `<h3> Leader Board</h3>`
         
         response.data.forEach((userDetails) => {
             console.log(userDetails)

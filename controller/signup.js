@@ -29,7 +29,7 @@ const signUp = async (req, res, next) => {
             let user=new User({ Name:Name, Number:Number,Email:Email,Password:hash})
             user.save()
             .then(result=>{
-                res.status(201).json({ message: "signUp successfully" })
+                res.status(201).json({ message: "Signed Up Successfully" })
             })
         })
     }
@@ -47,7 +47,7 @@ const login = async (req, res, next) => {
             console.log(Password,isData.Password)
             bcrypt.compare(Password,isData.Password,(err,result)=>{
                 if(result==true){
-                    return res.status(200).json({ message: "User Logged in succesfully",token:generateToken(isData.id,isData.Name,isData.ispremium) })
+                    return res.status(200).json({ message: "User Logged in Successfully",token:generateToken(isData.id,isData.Name,isData.ispremium) })
                 }
                 else{
                     return res.status(401).json({ message: "password mismatch" })

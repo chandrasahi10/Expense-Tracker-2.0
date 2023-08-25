@@ -1,0 +1,199 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+/* Styling for the container */
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Styling for links */
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Styling for form elements */
+.card form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.card form input,
+.card form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.card form button[type="submit"] {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.card form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#message {
+    margin-top: 20px;
+    color: #007bff;
+    font-size: 16px;
+}
+
+/* Styling for expense list */
+#itemList {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+#itemList li {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Styling for pagination and search bar */
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#pagination button,
+#limit {
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
+}
+
+#pagination button:hover,
+#limit:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Styling for the "Buy Premium" button */
+#rzp-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+#rzp-button:hover {
+    background-color: #218838;
+}
+
+/* Styling for the "Download File" button */
+#download {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+#download:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for leaderboard */
+#leaderboard {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 30px;
+}
+
+#leaderboard li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Rest of your CSS code ... */
+
+/* Styling for corner buttons and links */
+.corner-button,
+.corner-link {
+    position: absolute;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.corner-button.left-corner {
+    top:20px;
+    left: 20px;
+}
+
+.corner-link.right-corner {
+    top:50px;
+    right: 20px;
+}
+
+.corner-button:hover,
+.corner-link:hover {
+    background-color: #218838;
+    color: white;
+}
